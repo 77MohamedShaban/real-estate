@@ -41,9 +41,10 @@
 }
 
 .app-container {
-  background-image: linear-gradient(to bottom, #f8f8f8, #f5d2c1 48%, #e6b38f);
+  box-shadow: 0 5px 25px rgba(108, 106, 106, 0.25);
   background-size: 100% auto;
   padding-bottom: 40px;
   align-items: center;
   border-radius: 10px;
+  margin-top: 50px;
 }

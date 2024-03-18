@@ -17,8 +17,8 @@ const LoginForm = (props: Iprops) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const renderFormInputList = formInputLoginList.map((input) => (
-    <div className="input-wrapper">
+  const renderFormInputList = formInputLoginList.map((input, index) => (
+    <div className="input-wrapper" key={index}>
       <label htmlFor={input.id}>{input.label}</label>
       <input
         type={input.type}
@@ -41,14 +41,16 @@ const LoginForm = (props: Iprops) => {
       >
         <br />
         {renderFormInputList}
-        <button
-          className="botton-signUp"
-          onClick={() => setIsLoggedIn(true)}
-          type="submit"
-          name="Submit"
-        >
-          Log In
-        </button>
+        <div className="button-center">
+          <button
+            className="botton-logIn"
+            onClick={() => setIsLoggedIn(true)}
+            type="submit"
+            name="Submit"
+          >
+            Log In
+          </button>
+        </div>
       </form>
     </div>
   );

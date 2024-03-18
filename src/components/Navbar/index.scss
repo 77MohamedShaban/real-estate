@@ -1,15 +1,35 @@
 .navbar-list {
-  background-color: #fbefe2;
-  justify-content: space-between;
-  list-style: none;
+  background-image: linear-gradient(
+    to bottom,
+    #f8f8f8,
+    rgb(245, 224, 215),
+    rgb(239, 197, 178)
+  );
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1px 20px;
   color: rgba(83, 177, 117, 1);
-  padding: 1.5rem;
   border-radius: 10px;
+  box-sizing: border-box;
 }
 .button {
   color: rgb(69, 150, 99);
-  margin-left: 70em;
+  margin-left: 2em;
   background-color: white;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.navbar-logo {
+  width: 100px;
+}
+
+.navbar-logo-image {
+  margin-bottom: 0%;
+  width: 180px;
+  height: auto;
+  max-width: 250px;
+  max-height: 100px;
+  margin: 0%;
 }

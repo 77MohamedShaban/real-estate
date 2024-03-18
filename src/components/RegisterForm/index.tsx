@@ -17,8 +17,8 @@ const RegisterForm = (props: Iprops) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const renderFormInputList = formInputRigisterList.map((input) => (
-    <div className="input-wrapper">
+  const renderFormInputList = formInputRigisterList.map((input, index) => (
+    <div className="input-wrapper" key={index}>
       <label htmlFor={input.id}>{input.label}</label>
       <input
         type={input.type}
@@ -34,21 +34,23 @@ const RegisterForm = (props: Iprops) => {
       <div className="title">Sign Up</div>
       <form
         style={{ margin: 30 }}
-        className="login-form"
+        className="register-form"
         onSubmit={(event) => {
           event.preventDefault();
         }}
       >
         <br />
         {renderFormInputList}
-        <button
-          className="botton-signUp"
-          onClick={() => setIsRegister(true)}
-          type="submit"
-          name="Submit"
-        >
-          Sign Up
-        </button>
+        <div className="button-center">
+          <button
+            className="botton-signUp"
+            onClick={() => setIsRegister(true)}
+            type="submit"
+            name="Submit"
+          >
+            Sign Up
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -22,9 +22,19 @@ a:hover {
 }
 
 body {
-  padding-bottom: 95px;
-  background-image: linear-gradient(to bottom, #f8f8f8, #f5d2c1 48%, #e6b38f);
-  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background-image: linear-gradient(
+    to bottom,
+    #f8f8f8,
+    rgba(255, 246, 242, 1),
+    rgba(234, 177, 150, 1)
+  );
+  background-size: auto 120vh;
+  background-position: center;
 }
 
 h1 {

@@ -1,6 +1,5 @@
 .login-form {
-  color: #527760;
-  margin: 30px;
+  color: rgba(36, 120, 109, 1);
   font-size: larger;
   font-weight: 700;
   .input-wrapper {
@@ -13,30 +12,37 @@
     }
     input {
       font-weight: 600;
-      color: #36463b;
+      color: #516a58;
       padding: 15px 10px;
       border-radius: 10px;
       outline: none;
       border: none;
-      background-color: #f1e6e1;
+      background-color: #fff3f3;
       border: 3px solid transparent;
-
+      box-shadow: 0 1px 15px rgba(108, 106, 106, 0.25);
       &:focus {
         border: 3px solid #53b175;
       }
     }
   }
-}
-.botton-signUp {
-  background-color: rgba(59, 58, 93, 1);
-  padding-left: 10em;
-  padding-right: 10em;
-  margin-left: 20em;
-  margin-top: 20px;
-}
-.title {
-  color: #000000;
-  margin: 40px;
-  font-size: 30px;
-  font-weight: 800;
+  .botton-logIn {
+    background-color: rgba(59, 58, 93, 1);
+    white-space: nowrap;
+    font-weight: 700;
+    margin-top: 20px;
+    align-self: center;
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .button-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    color: #000000;
+    margin: 40px;
+    font-size: 30px;
+    font-weight: 800;
+  }
 }
