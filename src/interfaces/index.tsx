@@ -19,3 +19,9 @@ export interface IFormInputLogIn {
   id: string;
   name: keyof ILogInData;
 }
+
+export interface ICard {
+  id: number;
+  title: string;
+  image: string;
+}

@@ -7,10 +7,11 @@ interface Iprops {
   setIsRegister: (val: boolean) => void;
   userData: ISignUpData;
   setUserData: (user: ISignUpData) => void;
+  isRegister: boolean;
 }
 
 const RegisterForm = (props: Iprops) => {
-  const { setIsRegister, userData, setUserData } = props;
+  const { isRegister, setIsRegister, userData, setUserData } = props;
 
   const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
@@ -42,14 +43,21 @@ const RegisterForm = (props: Iprops) => {
         <br />
         {renderFormInputList}
         <div className="button-center">
-          <button
-            className="botton-signUp"
-            onClick={() => setIsRegister(true)}
-            type="submit"
-            name="Submit"
-          >
+          <button className="botton-signUp" type="submit" name="Submit">
             Sign Up
           </button>
+          <p className="mt-5 text-center text-sm text-gray-500">
+            Already have an account?
+            <a
+              href="#"
+              className="font-semibold leading-6 text-green-500 hover:text-green-400"
+              onClick={() => {
+                setIsRegister(!isRegister);
+              }}
+            >
+              Log In
+            </a>
+          </p>
         </div>
       </form>
     </div>

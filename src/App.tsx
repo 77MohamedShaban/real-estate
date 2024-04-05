@@ -6,6 +6,9 @@ import RegisterForm from "./components/RegisterForm";
 // import UserDetails from "./components/UserDetails";
 import { ILogInData, ISignUpData } from "./interfaces";
 import LoginForm from "./components/LoginForm";
+import Home from "./components/Home";
+import Header from "./components/Header.tsx";
+import logo from "./assets/MAZ.svg";
 
 function App() {
   const [isLogged, setIsLoggedIn] = useState(false);
@@ -24,22 +27,28 @@ function App() {
   console.log(isRegister);
   return (
     <>
-      <Navbar isRegister={isRegister} setIsRegister={setIsRegister} />
-      <div className="app-container">
-        {isRegister ? (
-          <LoginForm
-            setIsLoggedIn={setIsLoggedIn}
-            userData={logInData}
-            setUserData={setLogInData}
-          />
-        ) : (
-          <RegisterForm
-            setIsRegister={setIsLoggedIn}
-            userData={signUpData}
-            setUserData={setSignUpnData}
-          />
-        )}
-      </div>
+      <Header />
+      {/* <Home /> */}
+      {/* <Navbar isRegister={isRegister} setIsRegister={setIsRegister} />
+      <div className="grid grid-cols-1 md:grid-cols-2 m-3 gap-4">
+        <img src={logo} alt="" />
+        <div className="app-container ">
+          {isRegister ? (
+            <LoginForm
+              setIsLoggedIn={setIsLoggedIn}
+              userData={logInData}
+              setUserData={setLogInData}
+            />
+          ) : (
+            <RegisterForm
+              setIsRegister={setIsRegister}
+              userData={signUpData}
+              setUserData={setSignUpnData}
+              isRegister={isRegister}
+            />
+          )}
+        </div>
+      </div> */}
     </>
   );
 }

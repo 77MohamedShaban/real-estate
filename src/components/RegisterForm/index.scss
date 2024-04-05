@@ -1,5 +1,4 @@
 .register-form {
-  color: rgba(36, 120, 109, 1);
   font-size: larger;
   font-weight: 700;
   margin-top: 100px;
@@ -13,7 +12,7 @@
     }
     input {
       font-weight: 600;
-      color: #516a58;
+      color: #435c4a;
       padding: 15px 10px;
       border-radius: 10px;
       outline: none;
@@ -27,23 +26,30 @@
     }
   }
   .botton-signUp {
+    color: #fff3f3;
     background-color: rgba(59, 58, 93, 1);
     white-space: nowrap;
     font-weight: 700;
-    margin-top: 20px;
+    margin-top: 50px;
     align-self: center;
     padding-left: 150px;
     padding-right: 150px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 8px;
+    &:hover {
+      background-color: rgb(69, 68, 107);
+    }
   }
   .button-center {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .title {
-    color: #000000;
-    margin: 40px;
-    font-size: 30px;
-    font-weight: 800;
-  }
+}
+.title {
+  color: #000000;
+  margin: 40px;
+  font-size: 30px;
+  font-weight: 800;
 }

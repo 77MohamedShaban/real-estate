@@ -1,0 +1,57 @@
+ul {
+  background-image: linear-gradient(
+    to bottom,
+    #f8f8f8,
+    rgb(245, 224, 215),
+    rgb(239, 197, 178)
+  );
+  padding-top: 50px;
+  display: flex;
+  border-radius: 10px;
+  box-sizing: border-box;
+  list-style-type: none;
+  justify-content: center;
+  padding-right: 40px;
+  margin-left: 150px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 20em; /* Spacing between each link */
+    &:last-child {
+      margin-right: 0; /* Remove margin from the last link */
+    }
+    a {
+      font-size: larger;
+      font-weight: 700;
+      text-decoration: none;
+      color: #070707;
+      &:hover {
+        color: #0d34bf;
+      }
+    }
+  }
+}
+.navHome nav ul li img {
+  width: 20px;
+  height: auto;
+}
+
+.project-logo {
+  margin-right: 0px;
+  width: 15em;
+  height: auto;
+  margin-left: 0px;
+}
+
+.navHome {
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0;
+  display: flex;
+}
+
+// @media screen and (max-width: 768px) {
+
+// }

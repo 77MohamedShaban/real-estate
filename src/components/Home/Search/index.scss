@@ -1,0 +1,27 @@
+.search-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5em;
+}
+
+.search-input {
+  color: rgb(33, 33, 32);
+  width: 50em;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  background-color: #d9d9d9;
+}
+
+.search-input::placeholder {
+  color: #8e8888;
+}
+
+.search-input:focus {
+  border-color: #3ff545;
+  background-color: #ffffff;
+}
