@@ -98,6 +98,9 @@ export default function Cards() {
                     EGP
                   </span>
                 </p>
+                <p className="mt-6 text-xs leading-5 text-gray-600">
+                  {property.address}
+                </p>
               </div>
               <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
                 {/* //////////////////// Image /////////////////////////// */}
