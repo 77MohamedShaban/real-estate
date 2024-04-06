@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { cardsData } from "../../data";
-import Search from "./Search";
+import Search from "../Search";
 import Navbar from "./Navbar";
 import Card from "./card";
 import "./index.scss";

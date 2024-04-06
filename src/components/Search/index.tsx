@@ -1,5 +1,5 @@
 import "./index.scss";
-import searchIcon from "../../../assets/Search.svg";
+import searchIcon from "../../assets/Search.svg";
 
 const Search: React.FC<{
   setSearchValue: React.Dispatch<React.SetStateAction<string>>;

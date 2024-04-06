@@ -4,26 +4,6 @@ interface Iprops {
   setIsRegister: (val: boolean) => void;
 }
 
-const Navbarx = (props: Iprops) => {
-  const { isRegister, setIsRegister } = props;
-
-  return (
-    <div className="navbar-list">
-      <div className="navbar-logo">
-        <img src={logo} alt="Logo" className="navbar-logo-image" />
-      </div>
-      <button
-        className="button"
-        onClick={() => {
-          setIsRegister(!isRegister);
-        }}
-      >
-        {isRegister ? "Sign Up" : "Log In"}
-      </button>
-    </div>
-  );
-};
-
 const Navbar = (props: Iprops) => {
   const { isRegister, setIsRegister } = props;
   return (
