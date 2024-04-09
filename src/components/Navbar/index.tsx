@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./index.scss";
 interface Iprops {
   isRegister: boolean;
@@ -13,8 +14,8 @@ const Navbar = (props: Iprops) => {
         aria-label="Global"
       >
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="#"
+          <Link
+            to="/auth"
             className="text-sm font-semibold leading-6 text-gray-900"
             onClick={() => {
               setIsRegister(!isRegister);
@@ -22,7 +23,7 @@ const Navbar = (props: Iprops) => {
           >
             {isRegister ? "Sign Up" : "Log In"}{" "}
             <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
     </header>

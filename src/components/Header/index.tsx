@@ -11,47 +11,49 @@ import {
   DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { ChevronDownIcon, PhoneIcon } from "@heroicons/react/20/solid";
-import logo from "../assets/MAZ.svg";
+import logo from "../../assets/MAZ.svg";
+import { Link, NavLink } from "react-router-dom";
+import "./index.scss";
 
 const settings = [
   {
     name: "User_name",
     description: "User_id",
-
+    href: "/",
     icon: UserIcon,
   },
   {
     name: "Order Tracking",
     description: "",
-    href: "#",
+    href: "/",
     icon: TruckIcon,
   },
   {
     name: "Location Map",
     description: "",
-    href: "#",
+    href: "/",
     icon: MapPinIcon,
   },
   {
     name: "Style Guide",
     description: "",
-    href: "#",
+    href: "/",
     icon: BookOpenIcon,
   },
   {
     name: "About",
     description: "",
-    href: "#",
+    href: "/",
     icon: InformationCircleIcon,
   },
   {
     name: "Term & Conditions",
     description: "",
-    href: "#",
+    href: "/",
     icon: DocumentTextIcon,
   },
 ];
-const callsToAction = [{ name: "call us", href: "#", icon: PhoneIcon }];
+const callsToAction = [{ name: "call us", href: "/", icon: PhoneIcon }];
 
 function classNames(...classes: string[]): string {
   return classes.filter(Boolean).join(" ");
@@ -83,18 +85,18 @@ export default function Header() {
           </button>
         </div>
         <Popover.Group className="hidden lg:flex lg:gap-x-12 ">
-          <a
-            href="#"
+          <NavLink
+            to="/"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-700"
           >
             Home
-          </a>
-          <a
-            href="#"
+          </NavLink>
+          <NavLink
+            to="/favourite"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-700"
           >
             Favourite
-          </a>
+          </NavLink>
 
           <Popover className="relative">
             <Popover.Button className="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900 hover:text-blue-700">
@@ -128,13 +130,13 @@ export default function Header() {
                         />
                       </div>
                       <div className="flex-auto">
-                        <a
-                          href={item.href}
+                        <Link
+                          to={item.href}
                           className="block font-semibold text-gray-900"
                         >
                           {item.name}
                           <span className="absolute inset-0" />
-                        </a>
+                        </Link>
                         <p className="mt-1 text-gray-600">{item.description}</p>
                       </div>
                     </div>
@@ -160,12 +162,12 @@ export default function Header() {
           </Popover>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
-            href="#"
+          <Link
+            to="/intro"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-500"
           >
             Log out <span aria-hidden="true">&rarr;</span>
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -193,18 +195,18 @@ export default function Header() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                <a
-                  href="#"
+                <NavLink
+                  to="/"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-700"
                 >
                   Home
-                </a>
-                <a
-                  href="#"
+                </NavLink>
+                <NavLink
+                  to="/favourite"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-700"
                 >
                   Favourite
-                </a>
+                </NavLink>
 
                 <Disclosure as="div" className="-mx-3">
                   {({ open }) => (
@@ -277,12 +279,12 @@ export default function Header() {
                 </Disclosure>
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <Link
+                  to="/intro"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-gray-500"
                 >
                   Log out
-                </a>
+                </Link>
               </div>
             </div>
           </div>
