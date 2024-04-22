@@ -36,7 +36,7 @@ const RegisterForm = () => {
       //  * 2 - Fulfilled => SUCCESS => (OPTIONAL)
       const { status } = await axiosInstance.post("api/v1/auth/signup", data);
 
-      if (status === 200) {
+      if (status === 201) {
         toast.success(
           "You will navigate to the login page after 2 seconds to login.",
           {
@@ -59,7 +59,7 @@ const RegisterForm = () => {
       console.log(error);
       const errorObj = error as AxiosError<IErrorResponse>;
       // console.log(error);
-      toast.error(`${errorObj.response?.data.error.message}`, {
+      toast.error(`${errorObj.response?.data.message}`, {
         position: "bottom-center",
         duration: 4000,
       });
