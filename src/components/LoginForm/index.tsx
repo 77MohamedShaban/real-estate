@@ -57,8 +57,8 @@ const LoginForm = () => {
       //  * 3 - Rejected => FAILED => (OPTIONAL)
       console.log(error);
       const errorObj = error as AxiosError<IErrorResponse>;
-      // console.log(error);
-      toast.error(`${errorObj.response?.data.error.message}`, {
+      // console.log(errorObj);
+      toast.error(`${errorObj.response?.data.message}`, {
         position: "bottom-center",
         duration: 1500,
       });
@@ -117,6 +117,7 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 
