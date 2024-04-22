@@ -58,11 +58,13 @@ export interface ILoginInput {
 }
 
 export interface IErrorResponse {
+  message: string;
   error: {
     details?: {
-      errors: {
+      errors?: {
         message: string;
       }[];
+      message: string;
     };
     message?: string;
   };
