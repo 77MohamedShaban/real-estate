@@ -1,34 +1,84 @@
-import { ChangeEvent, useState } from "react";
 import "./index.scss";
-import { ILogInData, ISignUpData } from "../../interfaces";
-import { formInputLoginList } from "../../data";
+import Button from "../../components/ui/Button";
+import { ILogInData } from "../../interfaces";
 import { Link } from "react-router-dom";
 import logo from "../../assets/MAZ.svg";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { useState } from "react";
+import { LOGIN_FORM } from "../../data";
+import InputErrorMessage from "../ui/InputErrorMessage";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { loginSchema } from "../../validation";
+import axiosInstance from "../../config/axios.config";
+import toast from "react-hot-toast";
+import { AxiosError } from "axios";
+import { IErrorResponse } from "../../interfaces";
 
 const LoginForm = () => {
-  const [userData, setUserData] = useState<ISignUpData>({
-    fullname: "",
-    email: "",
-    password: "",
+  const [isLoading, setIsLoading] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ILogInData>({
+    resolver: yupResolver(loginSchema),
   });
 
-  const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = event.target;
-    setUserData({ ...userData, [name]: value });
+  // Handlers
+  const onSubmit: SubmitHandler<ILogInData> = async (data) => {
+    console.log("DATA", data);
+    setIsLoading(true);
+
+    try {
+      //  * 2 - Fulfilled => SUCCESS => (OPTIONAL)
+      const { status, data: resData } = await axiosInstance.post(
+        "api/v1/auth/login",
+        data
+      );
+      console.log(data);
+      console.log(resData);
+      if (status === 200) {
+        toast.success("You will navigate to the home page after 2 seconds.", {
+          position: "bottom-center",
+          duration: 1500,
+          style: {
+            backgroundColor: "black",
+            color: "white",
+            width: "fit-content",
+          },
+        });
+        localStorage.setItem("loggedInUser", JSON.stringify(resData));
+        setTimeout(() => {
+          location.replace("/");
+        }, 2000);
+      }
+    } catch (error) {
+      //  * 3 - Rejected => FAILED => (OPTIONAL)
+      console.log(error);
+      const errorObj = error as AxiosError<IErrorResponse>;
+      // console.log(error);
+      toast.error(`${errorObj.response?.data.error.message}`, {
+        position: "bottom-center",
+        duration: 1500,
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const renderFormInputList = formInputLoginList.map((input, index) => (
-    <div className="input-wrapper" key={index}>
-      <label htmlFor={input.id}>{input.label}</label>
-      <input
-        type={input.type}
-        name={input.name}
-        id={input.id}
-        value={userData[input.name]}
-        onChange={onChangeHandler}
-      />
-    </div>
-  ));
+  // Renders
+  const renderLoginForm = LOGIN_FORM.map(
+    ({ name, label, type, validation }, idx) => {
+      return (
+        <div className="input-wrapper" key={idx}>
+          <label htmlFor={name}>{label}</label>
+          <input type={type} id={name} {...register(name, validation)} />
+          {errors[name] && <InputErrorMessage msg={errors[name]?.message} />}
+        </div>
+      );
+    }
+  );
   return (
     <div>
       <header className="bg-swhite">
@@ -54,16 +104,14 @@ const LoginForm = () => {
           <form
             style={{ margin: 30 }}
             className="login-form"
-            onSubmit={(event) => {
-              event.preventDefault();
-            }}
+            onSubmit={handleSubmit(onSubmit)}
           >
             <br />
-            {renderFormInputList}
+            {renderLoginForm}
             <div className="button-center">
-              <button className="botton-logIn" type="submit" name="Submit">
-                Log In
-              </button>
+              <Button className="botton-logIn" isLoading={isLoading}>
+                Login
+              </Button>
             </div>
           </form>
         </div>

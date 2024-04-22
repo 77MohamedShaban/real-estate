@@ -1,26 +1,85 @@
-import { IFormInputLogIn, IFormInputSignUp, ICard } from "../interfaces";
+import { IFormInputLogIn, ICard, RegisterInput } from "../interfaces";
 import searchIcon from "../assets/maz 1.svg";
+import { ILoginInput, IRegisterInput } from "../interfaces";
 
-export const formInputRigisterList: IFormInputSignUp[] = [
+export const REGISTER_FORM: IRegisterInput[] = [
   {
+    name: "name",
     label: "Your Full Name",
     type: "text",
-    id: "fullname",
-    name: "fullname",
+    validation: {
+      required: true,
+      minLength: 5,
+    },
   },
   {
+    name: "email",
     label: "Your Email",
     type: "email",
-    id: "email",
-    name: "email",
+    validation: {
+      required: true,
+      pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+    },
   },
   {
+    name: "password",
     label: "Password",
     type: "password",
-    id: "password",
-    name: "password",
+    validation: {
+      required: true,
+      minLength: 6,
+    },
+  },
+  {
+    name: "passwordConfirm",
+    label: "Confirm Password",
+    type: "password",
+    validation: {
+      required: true,
+      minLength: 6,
+    },
+  },
+  {
+    name: "phone",
+    label: "Phone",
+    type: "text",
+    validation: {
+      required: true,
+      minLength: 11,
+    },
+  },
+  {
+    name: "whatsapp",
+    label: "Whatsapp Number",
+    type: "text",
+    validation: {
+      required: true,
+      minLength: 11,
+    },
   },
 ];
+
+export const LOGIN_FORM: ILoginInput[] = [
+  {
+    name: "email",
+    label: "Your Email",
+    type: "email",
+    validation: {
+      required: true,
+      pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
+    },
+  },
+  {
+    name: "password",
+    label: "Password",
+    type: "password",
+    validation: {
+      required: true,
+      minLength: 6,
+    },
+  },
+];
+
 export const formInputLoginList: IFormInputLogIn[] = [
   {
     label: "Your Email",
