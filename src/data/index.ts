@@ -1,4 +1,4 @@
-import { IFormInputLogIn, ICard, RegisterInput } from "../interfaces";
+import { IFormInputLogIn, ICard } from "../interfaces";
 import searchIcon from "../assets/maz 1.svg";
 import { ILoginInput, IRegisterInput } from "../interfaces";
 

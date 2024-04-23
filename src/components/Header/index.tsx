@@ -14,6 +14,10 @@ import { ChevronDownIcon, PhoneIcon } from "@heroicons/react/20/solid";
 import logo from "../../assets/MAZ.svg";
 import { Link, NavLink } from "react-router-dom";
 import "./index.scss";
+import { getLoggedInUser, isLogged } from "../../services/auth.service";
+import axiosInstance from "../../config/axios.config";
+import CookieService from "../../services/CookieService";
+import toast from "react-hot-toast";
 
 const settings = [
   {
@@ -60,6 +64,12 @@ function classNames(...classes: string[]): string {
 }
 
 export default function Header() {
+
+  const isLoggedIn = isLogged();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const userData = getLoggedInUser();
+
+  
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -92,10 +102,10 @@ export default function Header() {
             Home
           </NavLink>
           <NavLink
-            to="/favourite"
+            to="/favorite"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-blue-700"
           >
-            Favourite
+            Favorite
           </NavLink>
 
           <Popover className="relative">
@@ -158,17 +168,59 @@ export default function Header() {
                   ))}
                 </div>
               </Popover.Panel>
+
             </Transition>
           </Popover>
         </Popover.Group>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        { isLoggedIn ? (
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             to="/intro"
             className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-500"
+            onClick={async () => {
+              try {
+                // call logout api
+                const { status } = await axiosInstance.get('api/v1/auth/logout')
+                // remove jwt from cookies
+                CookieService.removeCookie('jwt');
+                // redirect to intro page
+                if (status === 200) {
+                  toast.success("You logged out successfully 🚀", {
+                    position: "bottom-center",
+                    duration: 0,
+                    style: {
+                      backgroundColor: "black",
+                      color: "white",
+                      width: "fit-content",
+                    },
+                  });
+                }
+              } catch (error) {
+                toast.error("Something went wrong", {
+                  position: "bottom-center",
+                  duration: 1500,
+                });
+              }
+              }}
           >
             Log out <span aria-hidden="true">&rarr;</span>
           </Link>
+
+
+
         </div>
+        ): 
+        (
+          <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <Link
+            to="/login"
+            className="text-sm font-semibold leading-6 text-gray-900 hover:text-gray-500"
+          >
+            Log in <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </div>
+        )
+        }
       </nav>
       <Dialog
         as="div"
@@ -202,10 +254,10 @@ export default function Header() {
                   Home
                 </NavLink>
                 <NavLink
-                  to="/favourite"
+                  to="/favorite"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-blue-700"
                 >
-                  Favourite
+                  Favorite
                 </NavLink>
 
                 <Disclosure as="div" className="-mx-3">

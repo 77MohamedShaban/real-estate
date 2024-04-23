@@ -1,6 +1,6 @@
 import "./index.scss";
 import Button from "../../components/ui/Button";
-import { ILogInData } from "../../interfaces";
+import { ICookieOptions, ILogInData } from "../../interfaces";
 import { Link } from "react-router-dom";
 import logo from "../../assets/MAZ.svg";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -13,6 +13,7 @@ import axiosInstance from "../../config/axios.config";
 import toast from "react-hot-toast";
 import { AxiosError } from "axios";
 import { IErrorResponse } from "../../interfaces";
+import CookieService from "../../services/CookieService";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -49,6 +50,11 @@ const LoginForm = () => {
           },
         });
         localStorage.setItem("loggedInUser", JSON.stringify(resData));
+        const cookiesOptions: ICookieOptions = {
+          expires: new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 60), // 60 days
+          path: '/'
+        }
+        CookieService.setCookie('jwt', resData.token, cookiesOptions);
         setTimeout(() => {
           location.replace("/");
         }, 2000);
@@ -57,8 +63,8 @@ const LoginForm = () => {
       //  * 3 - Rejected => FAILED => (OPTIONAL)
       console.log(error);
       const errorObj = error as AxiosError<IErrorResponse>;
-      // console.log(error);
-      toast.error(`${errorObj.response?.data.error.message}`, {
+      // console.log(errorObj);
+      toast.error(`${errorObj.response?.data.message}`, {
         position: "bottom-center",
         duration: 1500,
       });
@@ -117,6 +123,7 @@ const LoginForm = () => {
         </div>
       </div>
     </div>
+    
   );
 };
 

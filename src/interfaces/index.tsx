@@ -58,12 +58,20 @@ export interface ILoginInput {
 }
 
 export interface IErrorResponse {
+  message: string;
   error: {
     details?: {
-      errors: {
+      errors?: {
         message: string;
       }[];
+      message: string;
     };
     message?: string;
   };
+}
+
+// cookies options interface
+export interface ICookieOptions {
+  path: string;
+  expires: Date;
 }
